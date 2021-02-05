@@ -1,0 +1,17 @@
+body {
+	border: 1px solid gold;
+}
+
+.checkerboardContainer {
+	width: 55%;
+	display: flex;
+	flex-wrap: wrap;	
+
+}
+
+.space {
+	display: flex;
+  	flex-basis: 100px;
+  	justify-content: center;
+  	border: 1px solid gray;
+}
