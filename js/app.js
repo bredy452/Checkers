@@ -46,17 +46,17 @@ $(() => {
 			$div.css('background-color', '#221A03')
 		}	 
 	}
-	//create 24 pieces with 1 queen
-	//pieces will have a class so that each player has their own
+// 	//create 24 pieces with 1 queen
+// 	//pieces will have a class so that each player has their own
 
 
 
 
-	//create piece with different colors
-	const makingPieces = (pieceColor) =>{
+// 	//create piece with different colors
+const makingPieces = (pieceColor) =>{
 
 		for (let i = 1; i <= 24; i++) {
-	 		const $div = $('<div>').addClass(`${pieceColor}Pieces`).attr('id', 'pieces').css('height', '50px').css('width', '50px').css('border-radius', '50%').css('background-color', `${pieceColor}`)
+	 		const $div = $('<div>').addClass(`${pieceColor}Pieces`).attr('class', 'pieces').css('height', '50px').css('width', '50px').css('border-radius', '50%').css('background-color', `${pieceColor}`)
 	 		const $h2 = $('<h2>').text(i).css('color', 'white')
 	 		$div.append($h2)
 	 		$div.appendTo($(`.${pieceColor}CheckerPieceContainer`))
