@@ -2,10 +2,17 @@ body {
 	border: 1px solid gold;
 }
 
+.main {
+	border: 1px solid gold;
+	width: 55%;
+	display: inline-flex;
+	
+
+}
 .checkerboardContainer {
 	border: 1px solid gold;
 	width: 55%;
-	display: flex;
+	display: inline-flex;
 	flex-wrap: wrap;
 	/*flex-grow: 1;*/	
 
@@ -13,16 +20,20 @@ body {
 
 .redCheckerPieceContainer {
 	border: 1px solid gold;
-	width: 50%;
-	display:flex;
+	width: 27%;
+	height: 300px;
+	display: inline-flex;
 	flex-wrap: wrap;
+
+
 }
 
 .blackCheckerPieceContainer {
 	border: 1px solid gold;
-	width: 50%;
-	display:flex;
+	width: 27%;
+	display: inline-flex;
 	flex-wrap: wrap;
+
 }
 
 .space {
