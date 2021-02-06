@@ -3,15 +3,41 @@ body {
 }
 
 .checkerboardContainer {
+	border: 1px solid gold;
 	width: 55%;
 	display: flex;
-	flex-wrap: wrap;	
+	flex-wrap: wrap;
+	/*flex-grow: 1;*/	
 
+}
+
+.redCheckerPieceContainer {
+	border: 1px solid gold;
+	width: 50%;
+	display:flex;
+	flex-wrap: wrap;
+}
+
+.blackCheckerPieceContainer {
+	border: 1px solid gold;
+	width: 50%;
+	display:flex;
+	flex-wrap: wrap;
 }
 
 .space {
 	display: flex;
   	flex-basis: 100px;
-  	justify-content: center;
+  	/*justify-content: center;*/
   	border: 1px solid gray;
+}
+
+.pieces {
+	display:flex;
+	justify-content: center;
+	
+}
+
+h2 {
+	text-align: center;
 }
