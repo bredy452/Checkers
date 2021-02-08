@@ -1,3 +1,6 @@
+// create 24 pieces with 1 queen
+// pieces will have a class so that each player has their own
+
 // class CheckerPieces {
 // 		constructor(name = name, color = color mainPieces = [], queenPiece = []) {
 // 			this.mainPieces = mainPieces
@@ -12,7 +15,10 @@
 
 
 
-
+const pieces = [
+	{redpieces: []},
+	{blackpieces: []}
+]
 
 
 $(() => {
@@ -46,24 +52,51 @@ $(() => {
 			$div.css('background-color', '#221A03')
 		}	 
 	}
-// 	//create 24 pieces with 1 queen
-// 	//pieces will have a class so that each player has their own
 
 
 
 
 // 	//create piece with different colors
-const makingPieces = (pieceColor) =>{
+	const makingPieces = (pieceColor) =>{
 
-		for (let i = 1; i <= 24; i++) {
-	 		const $div = $('<div>').addClass(`${pieceColor}Pieces`).attr('class', 'pieces').css('height', '50px').css('width', '50px').css('border-radius', '50%').css('background-color', `${pieceColor}`)
-	 		const $h2 = $('<h2>').text(i).css('color', 'white')
-	 		$div.append($h2)
-	 		$div.appendTo($(`.${pieceColor}CheckerPieceContainer`))
-		} 
-	 }
-	 makingPieces('red')
-	 makingPieces('black')
+			for (let i = 1; i <= 24; i++) {
+	 			const $div = $('<div>').attr('id', `${pieceColor}Pieces`).attr('class', 'pieces').css('height', '50px').css('width', '50px	').css('border-radius', '50%').css('background-color', `${pieceColor}`)
+	 			const $h2 = $('<h2>').text(i).css('color', 'white')
+	 			$div.append($h2)
+	 			$div.appendTo($(`.${pieceColor}CheckerPieceContainer`))
+	 			if (pieceColor === 'red') {
+	 				pieces[0].redpieces.push($('#redPieces'))	
+	 			} else {
+	 				pieces[1].blackpieces.push($('#blackPieces'))
+	 			}
+			} 
+	    }
+
+	const newGame = () => {
+		const redPieces = pieces[0].redpieces
+		const blackPieces = pieces[1].blackpieces
+
+		 for (let i = 0; i <= 64; i++) {
+			if ($(`#${i}`).css('background-color') === 'rgb(219, 31, 42)') {
+				$(`#${i}`).append(blackPieces)
+				console.log(i)
+			} 	
+		 }
+			
+		
+		// const blackpieces = $('.blackCheckerPieceContainer').children()[i]
+		// const redpieces = $('.redCheckerPieceContainer').children()[i]
+	}
+makingPieces('red')
+makingPieces('black')
+newGame()
 	
+console.log($('.blackCheckerPieceContainer').children()[0])
+console.log(pieces[0].redpieces)
+console.log(pieces[1].blackpieces)
+console.log(pieces[0].redpieces[0])
+console.log($('h1').text())
+console.log($('#19').css('background-color'))
+console.log()
 
 })
