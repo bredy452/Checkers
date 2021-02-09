@@ -14,7 +14,6 @@
 
 
 
-
 const pieces = [
 	{redpieces: []},
 	{blackpieces: []}
@@ -56,47 +55,64 @@ $(() => {
 
 
 
-// 	//create piece with different colors
+	//create piece with different colors
 	const makingPieces = (pieceColor) =>{
 
-			for (let i = 1; i <= 24; i++) {
+			for (let i = 0; i  <= 24; i++) {
 	 			const $div = $('<div>').attr('id', `${pieceColor}Pieces`).attr('class', 'pieces').css('height', '50px').css('width', '50px	').css('border-radius', '50%').css('background-color', `${pieceColor}`)
 	 			const $h2 = $('<h2>').text(i).css('color', 'white')
 	 			$div.append($h2)
 	 			$div.appendTo($(`.${pieceColor}CheckerPieceContainer`))
 	 			if (pieceColor === 'red') {
-	 				pieces[0].redpieces.push($('#redPieces'))	
+	 				pieces[0].redpieces.push($div)	
 	 			} else {
-	 				pieces[1].blackpieces.push($('#blackPieces'))
+	 				pieces[1].blackpieces.push($div)
 	 			}
 			} 
+			$('#blackPieces').remove()
+			$('#redPieces').remove()
 	    }
 
 	const newGame = () => {
 		const redPieces = pieces[0].redpieces
 		const blackPieces = pieces[1].blackpieces
+		const $space = $('.space')
+		console.log($space.css('background-color'))
 
-		 for (let i = 0; i <= 64; i++) {
-			if ($(`#${i}`).css('background-color') === 'rgb(219, 31, 42)') {
-				$(`#${i}`).append(blackPieces)
-				console.log(i)
+		console.log(blackPieces)
+		
+		
+		for (let i = 0; i <= 24; i++) {
+		 
+		 	if (($(`#${i}`).css('background-color') === 'rgb(219, 31, 42)') && i <= 24) {
+		 		$(`#${i}`).append(blackPieces[i])	
 			} 	
+		}
+		 // console.log(blackPieces)
+		for (let i = 41; i <= 64; i++) {
+		 
+		 	if (($(`#${i}`).css('background-color') === 'rgb(219, 31, 42)')) {
+		  		 $(`#${i}`).append(redPieces[i - 40])
+		  	// 	console.log(blackPieces[i])
+		 		// console.log(i)
+		  	}
 		 }
-			
+		console.log($('#41'))
 		
 		// const blackpieces = $('.blackCheckerPieceContainer').children()[i]
 		// const redpieces = $('.redCheckerPieceContainer').children()[i]
 	}
-makingPieces('red')
-makingPieces('black')
-newGame()
-	
-console.log($('.blackCheckerPieceContainer').children()[0])
-console.log(pieces[0].redpieces)
-console.log(pieces[1].blackpieces)
-console.log(pieces[0].redpieces[0])
-console.log($('h1').text())
-console.log($('#19').css('background-color'))
-console.log()
+
+	makingPieces('black')
+	makingPieces('red')
+	newGame()
+
+// console.log($('.blackCheckerPieceContainer').children()[0])
+// console.log(pieces[0].redpieces)
+// console.log(pieces[1].blackpieces)
+// console.log(pieces[0].redpieces[0])
+// console.log($('h1').text())
+// console.log($('#19').css('background-color'))
+
 
 })
