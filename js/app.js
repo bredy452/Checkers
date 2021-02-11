@@ -134,10 +134,12 @@ $(() => {
 
 			 $('.ui-droppable').droppable({
 				drop: function(event, ui) {
+					//Return piece if something is already there
 					if ($(this).children().length === 2) {
 						$('.ui-draggable').draggable({
 							revert: 'invalid'
 						})
+						alert("Sorry, you can't move where there is already a piece")
 					} else {
 						ui.draggable.detach().appendTo($(this))
 					}
