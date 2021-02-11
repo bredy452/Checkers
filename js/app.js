@@ -131,10 +131,17 @@ $(() => {
 				helper:'clone',
 				// containment: '.ui-droppable'
 			})
-			$('.ui-droppable').droppable({
+
+			 $('.ui-droppable').droppable({
 				drop: function(event, ui) {
-					ui.draggable.detach().appendTo($(this))
-					console.log(ui.draggable)
+					if ($(this).children().length === 2) {
+						$('.ui-draggable').draggable({
+							revert: 'invalid'
+						})
+					} else {
+						ui.draggable.detach().appendTo($(this))
+					}
+					
 				}
 			})
 		}
