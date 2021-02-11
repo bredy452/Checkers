@@ -19,6 +19,8 @@ const pieces = [
 	{blackpieces: []}
 ]
 
+const spaceNumber = []
+
 
 $(() => {
 
@@ -116,31 +118,45 @@ $(() => {
 
 
 
+	// const start = 
 
 
 
 
 
 
-
-	// const $draggable = () => {
-	// 	const $drag = $('#draggable').draggable({appendTo: $('#draggable')})
-
+		
+		console.log($('.5').children().text())
 	 	const $movement = () => {
 			$('.ui-draggable').draggable({
 				helper:'clone',
-				// containment: '.ui-droppable'
+				//logs the class number of space where the piece was moved from
+				start: function(event, ui) {
+					spaceNumber.push($(event.target).parent().attr('class').split(' ')[0])
+				}
+
+				
+			 
 			})
 
 			 $('.ui-droppable').droppable({
 				drop: function(event, ui) {
+
+					//logs the class number of the dropped space
+					spaceNumber.push($(event.target).attr('class').split(' ')[0])
+					console.log(spaceNumber)
+					
 					//Return piece if something is already there
 					if ($(this).children().length === 2) {
 						$('.ui-draggable').draggable({
 							revert: 'invalid'
 						})
 						alert("Sorry, you can't move where there is already a piece")
-					} else {
+					// } else if($(this).children().length === 2 && $) {
+
+
+					// } 
+				} else {
 						ui.draggable.detach().appendTo($(this))
 					}
 					
