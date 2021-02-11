@@ -19,7 +19,7 @@ const pieces = [
 	{blackpieces: []}
 ]
 
-const spaceNumber = []
+let redSpaceNumber = []
 
 
 $(() => {
@@ -132,7 +132,10 @@ $(() => {
 				helper:'clone',
 				//logs the class number of space where the piece was moved from
 				start: function(event, ui) {
-					spaceNumber.push($(event.target).parent().attr('class').split(' ')[0])
+					redSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
+				},
+				over: function(event, ui) {
+					console.log($(event.target))
 				}
 
 				
@@ -143,9 +146,9 @@ $(() => {
 				drop: function(event, ui) {
 
 					//logs the class number of the dropped space
-					spaceNumber.push($(event.target).attr('class').split(' ')[0])
-					console.log(spaceNumber)
-					
+					redSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
+					console.log(redSpaceNumber)
+
 					//Return piece if something is already there
 					if ($(this).children().length === 2) {
 						$('.ui-draggable').draggable({
@@ -156,10 +159,17 @@ $(() => {
 
 
 					// } 
-				} else {
+					} else {
 						ui.draggable.detach().appendTo($(this))
+					  }
+
+					if (redSpaceNumber[0] - redSpaceNumber[1] === 14){
+						console.log("valid move")
+						redSpaceNumber.push(redSpaceNumber[0] - 7 )
+						// ui.draggable.detach().appendTo($(this))
+						console.log(redSpaceNumber)
+
 					}
-					
 				}
 			})
 		}
