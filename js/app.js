@@ -20,6 +20,7 @@ const pieces = [
 ]
 
 let redSpaceNumber = []
+let blackSpaceNumber
 
 
 $(() => {
@@ -88,17 +89,14 @@ $(() => {
 	 				pieces[1].blackpieces.push($div)
 	 			}
 			} 
-			$('.blackPieces').remove()
-			$('.redPieces').remove()
+			
 	    }
 	//puts pieces on the board
 	const $newGame = () => {
 		const redPieces = pieces[0].redpieces
 		const blackPieces = pieces[1].blackpieces
 		const $space = $('.space')
-		console.log($space.css('background-color'))
 
-		console.log(blackPieces)
 		
 		//inital space for black
 		for (let i = 0; i <= 24; i++) {
@@ -130,13 +128,11 @@ $(() => {
 	 	const $movement = () => {
 			$('.ui-draggable').draggable({
 				helper:'clone',
-				//logs the class number of space where the piece was moved from
+				//logs the class number of space where the piece was moved from (first element of array)
 				start: function(event, ui) {
 					redSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
-				},
-				over: function(event, ui) {
-					console.log($(event.target))
 				}
+				
 
 				
 			 
@@ -145,9 +141,9 @@ $(() => {
 			 $('.ui-droppable').droppable({
 				drop: function(event, ui) {
 
-					//logs the class number of the dropped space
+					//logs the class number of the dropped space (second element of array)
 					redSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
-					console.log(redSpaceNumber)
+					// console.log(redSpaceNumber)
 
 					//Return piece if something is already there
 					if ($(this).children().length === 2) {
@@ -163,12 +159,17 @@ $(() => {
 						ui.draggable.detach().appendTo($(this))
 					  }
 
-					if (redSpaceNumber[0] - redSpaceNumber[1] === 14){
-						console.log("valid move")
+					if (redSpaceNumber[0] - redSpaceNumber[1] === 14) {
+						//middle space (third element of array<right>)
 						redSpaceNumber.push(redSpaceNumber[0] - 7 )
+						console.log("valid move")
+					
 						// ui.draggable.detach().appendTo($(this))
 						console.log(redSpaceNumber)
-
+						//middle space (third element of array<left>)
+					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 18) {
+						redSpaceNumber.push(redSpaceNumber[0] - 9)
+						console.log("valid move")
 					}
 				}
 			})
