@@ -102,7 +102,8 @@ $(() => {
 		for (let i = 0; i <= 24; i++) {
 		 
 		 	if (($(`.${i}`).css('background-color') === 'rgb(219, 31, 42)') && i <= 24) {
-		 		$(`.${i}`).append(blackPieces[i])	
+		 		$(`.${i}`).append(blackPieces[i])
+
 			} 	
 		}
 		//initial space for red
@@ -157,19 +158,22 @@ $(() => {
 					// } 
 					} else {
 						ui.draggable.detach().appendTo($(this))
+						redSpaceNumber.push(redSpaceNumber[0] - 9 )
+						redSpaceNumber.push(redSpaceNumber[0] - 7)
 					  }
 
-					if (redSpaceNumber[0] - redSpaceNumber[1] === 14) {
+					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1) {
 						//middle space (third element of array<right>)
-						redSpaceNumber.push(redSpaceNumber[0] - 7 )
-						console.log("valid move")
+						console.log("invalid")
+
+						
+			 		// 	}
 					
 						// ui.draggable.detach().appendTo($(this))
 						console.log(redSpaceNumber)
 						//middle space (third element of array<left>)
-					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 18) {
-						redSpaceNumber.push(redSpaceNumber[0] - 9)
-						console.log("valid move")
+					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1) {
+						console.log("invalid move")
 					}
 				}
 			})
