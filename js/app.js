@@ -20,7 +20,7 @@ const pieces = [
 ]
 
 let redSpaceNumber = []
-let blackSpaceNumber
+let blackSpaceNumber = []
 
 
 $(() => {
@@ -77,7 +77,7 @@ $(() => {
 	const $makingPieces = (pieceColor) =>{
 
 			for (let i = 0; i  <= 24; i++) {
-	 			const $div = $('<div>').attr('class', `${pieceColor}Pieces`).attr('class', 'pieces').css('height', '50px').css('width', '50px	').css('border-radius', '50%').css('background-color', `${pieceColor}`)
+	 			const $div = $('<div>').attr('class', `${pieceColor}Pieces`).css('height', '50px').css('width', '50px	').css('border-radius', '50%').css('background-color', `${pieceColor}`)
 	 			const $h2 = $('<h2>').text(i).css('color', 'white')
 	 			$div.append($h2)
 	 			// $div.attr('id', 'draggable')
@@ -125,8 +125,10 @@ $(() => {
 
 
 		
-		console.log($('.5').children().text())
+		
 	 	const $movement = () => {
+	 		
+
 			$('.ui-draggable').draggable({
 				helper:'clone',
 				//logs the class number of space where the piece was moved from (first element of array)
@@ -153,9 +155,10 @@ $(() => {
 
 					 //  }
 					 console.log(redSpaceNumber)
+					 console.log(ui.draggable.attr('class').split(' ')[0] === 'redPieces')
 
 					//Return piece if something is already there
-					if ($(this).children().length === 2 || (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1) || (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1) || (redSpaceNumber[1] - redSpaceNumber[0] === 7) || (redSpaceNumber[1] - redSpaceNumber[0] === 9) || (redSpaceNumber[1] - redSpaceNumber[0] === 18 && $(`.${redSpaceNumber[0] + 9}`).children().length === 1) || (redSpaceNumber[1] - redSpaceNumber[0] === 14 && $(`.${redSpaceNumber[0] + 7}`).children().length === 1) || (redSpaceNumber[0] - 16 === redSpaceNumber[1]) || (redSpaceNumber[0] + 16 === redSpaceNumber[1]) || (redSpaceNumber[0] - 2 === redSpaceNumber[1]) || (redSpaceNumber[0] + 2 === redSpaceNumber[1])) {
+					if ($(this).children().length === 2 || (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 7 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 9 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 18 && $(`.${redSpaceNumber[0] + 9}` ).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 14 && $(`.${redSpaceNumber[0] + 7}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] - 16 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] + 16 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] - 2 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] + 2 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces')) {
 						$('.ui-draggable').draggable({
 							revert: 'invalid'
 						})
@@ -166,52 +169,11 @@ $(() => {
 					// } 
 					} else {
 						ui.draggable.detach().appendTo($(this))
-						// redSpaceNumber.push(redSpaceNumber[0] - 9 )
-						// redSpaceNumber.push(redSpaceNumber[0] - 7)
 					   }
-
-					// if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1) {
-					// 	//middle space (third element of array<right>)
-					// 	console.log("invalid")
-					// 	console.log(redSpaceNumber)
-					// // 	console.log($(event))
-
-
-			 		
-					
-					// // 	// ui.draggable.detach().appendTo($(this))
-						
-					// // 	//middle space (third element of array<left>)
-					// } else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1) {
-					// 	console.log("invalid move")
-					// 	console.log(redSpaceNumber)
-					// }
 				}
 			})
+			 
 		}
-	// 	}
-	// }
-
-	
-
-	// $('#draggable').draggable()
-	// const $dropPieces = () => {
-	// 	const $redSpace = $('.space')
-	// 	$redSpace.on('drop', (event) => {
-	// 		event.preventDefault()	
-	//  	}
-	// }
-
-	//event for when I drag the pieces for player 1
-  //   const $dragPieces = () =>{
-	 // 	const $blackPiece = $('#blackPieces')
-	 // 	$blackPiece.on('drag', (event) => {
-	 // 		$(event.target)
-	 // 	}
-
-	 // }
-	 
-
 
 	$makingPieces('black')
 	$makingPieces('red')
