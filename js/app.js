@@ -145,13 +145,15 @@ $(() => {
 
 					//logs the class number of the dropped space (second element of array)
 					redSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
-					redSpaceNumber.push(redSpaceNumber[0] - 9 )
+					redSpaceNumber.push(redSpaceNumber[0] - 9)
 					redSpaceNumber.push(redSpaceNumber[0] - 7)
+					redSpaceNumber.push(redSpaceNumber[0] + 7)
+					redSpaceNumber.push(redSpaceNumber[0] + 9)
 					 //  }
-					// console.log(redSpaceNumber)
+					 console.log(redSpaceNumber)
 
 					//Return piece if something is already there
-					if ($(this).children().length === 2 || (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1) || (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1)) {
+					if ($(this).children().length === 2 || (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1) || (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1) || (redSpaceNumber[1] - redSpaceNumber[0] === 7) || (redSpaceNumber[1] - redSpaceNumber[0] === 9) || (redSpaceNumber[1] - redSpaceNumber[0] === 18 && $(`.${redSpaceNumber[0] + 9}`).children().length === 1) || (redSpaceNumber[1] - redSpaceNumber[0] === 14 && $(`.${redSpaceNumber[0] + 7}`).children().length === 1)) {
 						$('.ui-draggable').draggable({
 							revert: 'invalid'
 						})
