@@ -135,6 +135,9 @@ $(() => {
 				start: function(event, ui) {
 					redSpaceNumber = []
 					redSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
+
+					blackSpaceNumber = []
+					blackSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
 				}
 				
 
@@ -146,27 +149,44 @@ $(() => {
 				drop: function(event, ui) {
 
 					//logs the class number of the dropped space (second element of array)
-					redSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
-					redSpaceNumber.push(redSpaceNumber[0] - 9)
-					redSpaceNumber.push(redSpaceNumber[0] - 7)
-					redSpaceNumber.push(redSpaceNumber[0] + 7)
-					redSpaceNumber.push(redSpaceNumber[0] + 9)
+					if (ui.draggable.attr('class').split(' ')[0] === 'redPieces') {
+						redSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
+						redSpaceNumber.push(redSpaceNumber[0] - 9)
+						redSpaceNumber.push(redSpaceNumber[0] - 7)
+						redSpaceNumber.push(redSpaceNumber[0] + 7)
+						redSpaceNumber.push(redSpaceNumber[0] + 9)
+					} else {
+						blackSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
+						blackSpaceNumber.push(blackSpaceNumber[0] + 9)
+						blackSpaceNumber.push(blackSpaceNumber[0] + 7)
+						blackSpaceNumber.push(blackSpaceNumber[0] - 7)
+						blackSpaceNumber.push(blackSpaceNumber[0] - 9)
+					}
+
+
 
 
 					 //  }
 					 console.log(redSpaceNumber)
+					 console.log(blackSpaceNumber)
 					 console.log(ui.draggable.attr('class').split(' ')[0] === 'redPieces')
 
-					//Return piece if something is already there
+					//Moves for redpieces
 					if ($(this).children().length === 2 || (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[2]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[3]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 7 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 9 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 18 && $(`.${redSpaceNumber[0] + 9}` ).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[1] - redSpaceNumber[0] === 14 && $(`.${redSpaceNumber[0] + 7}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] - 16 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] + 16 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] - 2 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces') || (redSpaceNumber[0] + 2 === redSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'redPieces')) {
+
 						$('.ui-draggable').draggable({
 							revert: 'invalid'
 						})
 						alert("invalid")
-					// } else if($(this).children().length === 2 && $) {
+						
+					//Moves for blackpieces
+					} else if ((blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[3]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces')|| (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[2]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces')|| (blackSpaceNumber[0] - blackSpaceNumber[1] === 7 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] - blackSpaceNumber[1] === 9 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces')|| (blackSpaceNumber[0] - blackSpaceNumber[1] === 18 && $(`.${blackSpaceNumber[1] + 9}` ).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] - blackSpaceNumber[1] === 14 && $(`.${blackSpaceNumber[1] + 7}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces')|| (blackSpaceNumber[0] + 16 === blackSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] - 16 === blackSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] - 2 === blackSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] + 2 === blackSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'blackPieces')) {
 
-
-					// } 
+						$('.ui-draggable').draggable({
+							revert: 'invalid'
+						})
+						alert("invalid")
+				
 					} else {
 						ui.draggable.detach().appendTo($(this))
 					   }

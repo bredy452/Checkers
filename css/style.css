@@ -4,7 +4,12 @@ body {
 
 h2 {
   text-align: center;
-  /*display: none;*/
+ /* transform: rotate(180deg);*/
+  display: none;
+}
+
+h1 {
+  /*transform: rotate(180deg);*/
 }
 
 #main {
@@ -25,6 +30,7 @@ h2 {
 }
 
 .checkerboardContainer {
+  /*transform: rotate(180deg);*/
   border: 1px solid blue;
   width: 90%;
   display: flex;
