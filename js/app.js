@@ -21,6 +21,7 @@ const pieces = [
 
 let redSpaceNumber = []
 let blackSpaceNumber = []
+let kingSpaceNumber = []
 let $events = []
 let black = []
 let red = []
@@ -171,6 +172,9 @@ $(() => {
 
 					blackSpaceNumber = []
 					blackSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
+
+					kingSpaceNumber =[]
+					kingSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
 				}
 				
 				
@@ -183,18 +187,46 @@ $(() => {
 				drop: function(event, ui) {
 
 					//logs the class number of the dropped space (second element of array)
-					if (ui.draggable.attr('class').split(' ')[0] === 'redPieces') {
+					if (ui.draggable.attr('class').split(' ')[0] === 'redPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king') {
 						redSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
 						redSpaceNumber.push(redSpaceNumber[0] - 9)
 						redSpaceNumber.push(redSpaceNumber[0] - 7)
 						redSpaceNumber.push(redSpaceNumber[0] + 7)
 						redSpaceNumber.push(redSpaceNumber[0] + 9)
-					} else {
+					} else if (ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king') {
 						blackSpaceNumber.push(Number.parseInt($(event.target).attr('class').split(' ')[0]))
 						blackSpaceNumber.push(blackSpaceNumber[0] + 9)
 						blackSpaceNumber.push(blackSpaceNumber[0] + 7)
 						blackSpaceNumber.push(blackSpaceNumber[0] - 7)
 						blackSpaceNumber.push(blackSpaceNumber[0] - 9)
+					} else if (ui.draggable.attr('class').split(' ')[0] === 'redPieces' && ui.draggable.attr('class').split(' ')[0] === 'king') {
+						kingSpaceNumber.push(kingSpaceNumber[0] + 9)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 18)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 27)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 36)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 45)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 54)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 63)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 7)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 14)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 21)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 28)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 35)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 42)
+						kingSpaceNumber.push(kingSpaceNumber[0] + 49)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 9)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 18)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 27)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 36)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 45)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 54)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 7)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 14)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 21)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 28)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 35)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 42)
+						kingSpaceNumber.push(kingSpaceNumber[0] - 49)
 					}
 					
 
@@ -203,6 +235,7 @@ $(() => {
 					 //  }
 					 console.log(redSpaceNumber)
 					 console.log(blackSpaceNumber)
+					 console.log(kingSpaceNumber)
 					 console.log(ui.draggable.attr('class').split(' ')[0] === 'redPieces')
 
 					//Moves for redpieces
@@ -357,8 +390,8 @@ $(() => {
 	// $makingPieces('black')
 	// $makingPieces('red')
 	$('button').on('click', (event)=>{
-		$('.blackPieces').detach()
-		$('.redPieces').detach()
+		$('.blackPieces').removeClass('king').detach()
+		$('.redPieces').removeClass('king').text('').detach()
 $('.blackCheckerPieceContainer').children('div').detach()
 
 		$newGame()
