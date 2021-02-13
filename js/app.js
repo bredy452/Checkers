@@ -162,7 +162,7 @@ $(() => {
 						blackSpaceNumber.push(blackSpaceNumber[0] - 7)
 						blackSpaceNumber.push(blackSpaceNumber[0] - 9)
 					}
-
+					
 
 
 
@@ -191,13 +191,8 @@ $(() => {
 						ui.draggable.detach().appendTo($(this))
 					   }
 
-					 
+
 					   
-					// if ((redSpaceNumber[0] - redSpaceNumber[1] === 18) && ($(`.${redSpaceNumber[0]-9}`).children().length === 1) && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces")) ){
-					// 	console.log($(`.${redSpaceNumber[0]-9}`))
-						
-						
-					// }
 					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[0]-9}`).children().length === 2 && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces")) {
 						$(`.${redSpaceNumber[0]-9}`).children()[1].remove()
 
@@ -214,6 +209,20 @@ $(() => {
 
 					} 
 
+					for (let i = 2; i <= 8; i++) {
+						if ($(`.${[i]}`).children('div').hasClass("redPieces")) {
+							// console.log($(event.target).children('div').children()[0]).text('H')
+							$(event.target).children('div').addClass('king')
+							$('.king').text('K')
+							console.log ($(event.target).attr('class')[0])
+							// $(event.target).children('div').replaceWith('<h2>Q</h2>')
+
+						 }
+					}
+					// if (($(current.target).children('div').hasClass("redPieces")) && ($(event.target).attr('class')[0] === 1 || ($(event.target).attr('class')[0] === 2) || $(event.target).attr('class')[0] === 3 || $(event.target).attr('class')[0] === 4 || $(event.target).attr('class')[0] === 5 || $(event.target).attr('class')[0] === 6 || $(event.target).attr('class')[0] === ) )
+
+						
+
 
 
 				}
@@ -222,9 +231,18 @@ $(() => {
 			 
 		}
 
-	$makingPieces('black')
-	$makingPieces('red')
-	$newGame()
+	// $makingPieces('black')
+	// $makingPieces('red')
+	$('button').on('click', (event)=>{
+		$('.blackPieces').remove()
+		$('.redPieces').remove()
+		
+		$newGame($makingPieces('black'), $makingPieces('red'))
+
+
+	})
+
+	$newGame($makingPieces('black'), $makingPieces('red'))
 	$movement()
 
 

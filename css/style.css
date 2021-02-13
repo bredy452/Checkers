@@ -68,3 +68,10 @@ h1 {
   align-items: center;
 
 }
+
+.king {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 50px;
