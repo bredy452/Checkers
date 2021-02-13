@@ -209,13 +209,13 @@ $(() => {
 					$winningGame()
 
 					 //Red taking pieces  
-					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[0]-9}`).children().length === 2 && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces") && $(`.${redSpaceNumber[0]-18}`).children().length === 1 ) {
+					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[0]-9}`).children().length === 2 && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces") && ($(`.${redSpaceNumber[0]-18}`).children().length === 1 || $(`.${redSpaceNumber[0]-18}`).children('div').hasClass("redPieces")) ) {
 						red.push(1)
 						$(`.${redSpaceNumber[0]-9}`).children()[1].remove()
 						// console.log(black.length)
 						// console.log(red.length)
 
-					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[0]-7}`).children().length === 2 && $(`.${redSpaceNumber[0]-7}`).children('div').hasClass("blackPieces") && $(`.${redSpaceNumber[0]-14}`).children().length === 1) {
+					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[0]-7}`).children().length === 2 && $(`.${redSpaceNumber[0]-7}`).children('div').hasClass("blackPieces")) {
 						red.push(1)
 						$(`.${redSpaceNumber[0]-7}`).children()[1].remove()
 						
@@ -223,12 +223,12 @@ $(() => {
 					} 
 
 					//Black taking pieces
-					if (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[0]+9}`).children().length === 2 &&$(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("redPieces") && $(`.${blackSpaceNumber[0]-18}`).children().length === 1) {
+					if (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[0]+9}`).children().length === 2 &&$(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("redPieces")) {
 						black.push(1)
 						$(`.${blackSpaceNumber[0]+9}`).children()[1].remove()
 						
 
-					} else if (blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[0]+7}`).children().length === 2 && $(`.${blackSpaceNumber[0]+7}`).children('div').hasClass("redPieces") && $(`.${blackSpaceNumber[0]-14}`).children().length === 1) {
+					} else if (blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[0]+7}`).children().length === 2 && $(`.${blackSpaceNumber[0]+7}`).children('div').hasClass("redPieces")) {
 						black.push(1)
 						$(`.${blackSpaceNumber[0]+7}`).children()[1].remove()
 						
