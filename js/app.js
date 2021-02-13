@@ -107,6 +107,17 @@ $(() => {
 		  	}
 		}
 	}
+		const $winningGame = () => {
+			
+			if (black.length === 12) {
+
+			alert('Congratulations! Red Wins!')
+		} else if (red.length === 12){
+			alert("Congratulations! Black Wins")
+		}
+
+
+		}
 
 	 	const $movement = () => {
 	 		
@@ -123,6 +134,8 @@ $(() => {
 
 					kingSpaceNumber =[]
 					kingSpaceNumber.push(Number.parseInt($(event.target).parent().attr('class').split(' ')[0]))
+					// console.log(black.length)
+					// console.log(red.length)
 				}
 			 
 			})
@@ -181,7 +194,7 @@ $(() => {
 							revert: 'invalid'
 						})
 						alert("invalid")
-
+						$winningGame()
 					//Moves for blackpieces
 					} else if ((blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[3]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king')|| (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[2]}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king')|| (blackSpaceNumber[0] - blackSpaceNumber[1] === 7 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king') || (blackSpaceNumber[0] - blackSpaceNumber[1] === 9 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king')|| (blackSpaceNumber[0] - blackSpaceNumber[1] === 18 && $(`.${blackSpaceNumber[1] + 9}` ).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king') || (blackSpaceNumber[0] - blackSpaceNumber[1] === 14 && $(`.${blackSpaceNumber[1] + 7}`).children().length === 1 && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && ui.draggable.attr('class').split(' ')[0] !== 'king')|| (blackSpaceNumber[0] + 16 === blackSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] - 16 === blackSpaceNumber[1] && ui.draggable.attr('class').split(' ')[0] === 'blackPieces') || (blackSpaceNumber[0] - 2 === blackSpaceNumber[1]) || (blackSpaceNumber[0] + 2 === blackSpaceNumber[1]) || (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[0]+9}`).children().length === 2 && $(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("blackPieces")) || (blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[0]+7}`).children().length === 2 && $(`.${blackSpaceNumber[0]+7}`).children('div').hasClass("blackPieces")) || (blackSpaceNumber[0] - blackSpaceNumber[1] === 14 && $(`.${blackSpaceNumber[0]-7}`).children().length === 2 && $(`.${blackSpaceNumber[0]-7}`).children('div').hasClass("blackPieces")) || (blackSpaceNumber[0] - blackSpaceNumber[1] === 18 && $(`.${blackSpaceNumber[0]-9}`).children().length === 2 && $(`.${blackSpaceNumber[0]-9}`).children('div').hasClass("blackPieces")) || (blackSpaceNumber[0] - blackSpaceNumber[1] === 18 && $(`.${blackSpaceNumber[0]-9}`).children().length === 2 && $(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("redPieces")) && ui.draggable.attr('class').split(' ')[0] !== 'king' || (blackSpaceNumber[0] - blackSpaceNumber[1] === 14 && $(`.${blackSpaceNumber[0]-7}`).children().length === 2 && $(`.${blackSpaceNumber[0]-7}`).children('div').hasClass("redPieces") && ui.draggable.attr('class').split(' ')[0] !== 'king') || (blackSpaceNumber[0] - blackSpaceNumber[1] === 18 && $(`.${blackSpaceNumber[0]-7}`).children().length === 2 && $(`.${blackSpaceNumber[0]-9}`).children('div').hasClass("redPieces") && ui.draggable.attr('class').split(' ')[0] !== 'king'))  {
 
@@ -193,16 +206,19 @@ $(() => {
 					} else {
 						ui.draggable.detach().appendTo($(this))
 					}
-
+					$winningGame()
 
 					 //Red taking pieces  
 					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[0]-9}`).children().length === 2 && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces")) {
 						red.push(1)
 						$(`.${redSpaceNumber[0]-9}`).children()[1].remove()
+						// console.log(black.length)
+						// console.log(red.length)
 
 					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[0]-7}`).children().length === 2 && $(`.${redSpaceNumber[0]-7}`).children('div').hasClass("blackPieces")) {
 						red.push(1)
 						$(`.${redSpaceNumber[0]-7}`).children()[1].remove()
+						
 					
 					} 
 
@@ -210,13 +226,15 @@ $(() => {
 					if (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[0]+9}`).children().length === 2 &&$(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("redPieces")) {
 						black.push(1)
 						$(`.${blackSpaceNumber[0]+9}`).children()[1].remove()
+						
 
 					} else if (blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[0]+7}`).children().length === 2 && $(`.${blackSpaceNumber[0]+7}`).children('div').hasClass("redPieces")) {
 						black.push(1)
 						$(`.${blackSpaceNumber[0]+7}`).children()[1].remove()
+						
 
 					} 
-					
+					$winningGame()
 					for (let i = 2; i <= 8; i++) {
 						if ($(`.${[i]}`).children('div').hasClass("redPieces") && ui.draggable.attr('class').split(' ')[0] === 'redPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])=== i) {
 							$(event.target).children('div').addClass('king')
@@ -226,7 +244,6 @@ $(() => {
 								if ($(`.${[i]}`).children('div').hasClass("blackPieces") && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])=== i) {
 									$(event.target).children('div').addClass('king')
 									$('.king').text('K')
-									console.log ($(event.target).attr('class')[0])
 						 		}
 							}
 						}
@@ -236,14 +253,22 @@ $(() => {
 						if ($(`.${[i]}`).children('div').hasClass("blackPieces") && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])=== i) {
 							$(event.target).children('div').addClass('king')
 							$('.king').text('K')
-							
+					$winningGame()		
 						}
 					}
+					
+						
 
-				}
+
+		}
+
+				
 
 			})
-			 
+		
+
+		
+
 		}
 	
 	$('button').on('click', (event)=>{
@@ -258,6 +283,8 @@ $(() => {
 	$makingPieces('red')
 	$newGame()
 	$movement()
+	$winningGame()
+	
 
 
 })
