@@ -211,15 +211,35 @@ $(() => {
 					} 
 
 					for (let i = 2; i <= 8; i++) {
-						if ($(`.${[i]}`).children('div').hasClass("redPieces") && ui.draggable.attr('class').split(' ')[0] === 'redPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])===i) {
+						if ($(`.${[i]}`).children('div').hasClass("redPieces") && ui.draggable.attr('class').split(' ')[0] === 'redPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])=== i) {
 							// console.log($(event.target).children('div').children()[0]).text('H')
 							$(event.target).children('div').addClass('king')
 							$('.king').text('K')
 							console.log ($(event.target).attr('class')[0])
 							// $(event.target).children('div').replaceWith('<h2>Q</h2>')
-
+							for (let i = 57; i <= 63; i++) {
+								if ($(`.${[i]}`).children('div').hasClass("blackPieces") && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])=== i) {
+								// console.log($(event.target).children('div').children()[0]).text('H')
+								$(event.target).children('div').addClass('king')
+								$('.king').text('K')
+								console.log ($(event.target).attr('class')[0])
+								// $(event.target).children('div').replaceWith('<h2>Q</h2>')
+							
+						 		}
+							}
 						 }
 					}
+					
+					for (let i = 57; i <= 63; i++) {
+								if ($(`.${[i]}`).children('div').hasClass("blackPieces") && ui.draggable.attr('class').split(' ')[0] === 'blackPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])=== i) {
+								// console.log($(event.target).children('div').children()[0]).text('H')
+								$(event.target).children('div').addClass('king')
+								$('.king').text('K')
+								console.log ($(event.target).attr('class')[0])
+								// $(event.target).children('div').replaceWith('<h2>Q</h2>')
+							
+						 		}
+							}
 					// if (($(current.target).children('div').hasClass("redPieces")) && ($(event.target).attr('class')[0] === 1 || ($(event.target).attr('class')[0] === 2) || $(event.target).attr('class')[0] === 3 || $(event.target).attr('class')[0] === 4 || $(event.target).attr('class')[0] === 5 || $(event.target).attr('class')[0] === 6 || $(event.target).attr('class')[0] === ) )
 
 						
