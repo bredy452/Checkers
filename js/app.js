@@ -111,9 +111,9 @@ $(() => {
 			
 			if (black.length === 12) {
 
-			alert('Congratulations! Red Wins!')
+			alert('Congratulations! Black Wins!')
 		} else if (red.length === 12){
-			alert("Congratulations! Black Wins")
+			alert("Congratulations! Red Wins!")
 		}
 
 
