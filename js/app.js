@@ -209,7 +209,7 @@ $(() => {
 					$winningGame()
 
 					 //Red taking pieces  
-					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[0]-9}`).children().length === 2 && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces")) {
+					if (redSpaceNumber[0] - redSpaceNumber[1] === 18 && $(`.${redSpaceNumber[0]-9}`).children().length === 2 && $(`.${redSpaceNumber[0]-9}`).children('div').hasClass("blackPieces") && $(`.${redSpaceNumber[0]-18}`).children().length === 1 ) {
 						red.push(1)
 						$(`.${redSpaceNumber[0]-9}`).children()[1].remove()
 						// console.log(black.length)
