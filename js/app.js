@@ -215,7 +215,7 @@ $(() => {
 						// console.log(black.length)
 						// console.log(red.length)
 
-					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[0]-7}`).children().length === 2 && $(`.${redSpaceNumber[0]-7}`).children('div').hasClass("blackPieces")) {
+					} else if (redSpaceNumber[0] - redSpaceNumber[1] === 14 && $(`.${redSpaceNumber[0]-7}`).children().length === 2 && $(`.${redSpaceNumber[0]-7}`).children('div').hasClass("blackPieces") && $(`.${redSpaceNumber[0]-14}`).children().length === 1) {
 						red.push(1)
 						$(`.${redSpaceNumber[0]-7}`).children()[1].remove()
 						
