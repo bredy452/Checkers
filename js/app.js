@@ -211,7 +211,7 @@ $(() => {
 					} 
 
 					for (let i = 2; i <= 8; i++) {
-						if ($(`.${[i]}`).children('div').hasClass("redPieces")) {
+						if ($(`.${[i]}`).children('div').hasClass("redPieces") && ui.draggable.attr('class').split(' ')[0] === 'redPieces' && Number.parseInt($(event.target).attr('class').split(' ')[0])===i) {
 							// console.log($(event.target).children('div').children()[0]).text('H')
 							$(event.target).children('div').addClass('king')
 							$('.king').text('K')
