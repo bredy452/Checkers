@@ -223,12 +223,12 @@ $(() => {
 					} 
 
 					//Black taking pieces
-					if (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[0]+9}`).children().length === 2 &&$(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("redPieces")) {
+					if (blackSpaceNumber[1] - blackSpaceNumber[0] === 18 && $(`.${blackSpaceNumber[0]+9}`).children().length === 2 &&$(`.${blackSpaceNumber[0]+9}`).children('div').hasClass("redPieces") && $(`.${blackSpaceNumber[0]-18}`).children().length === 1) {
 						black.push(1)
 						$(`.${blackSpaceNumber[0]+9}`).children()[1].remove()
 						
 
-					} else if (blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[0]+7}`).children().length === 2 && $(`.${blackSpaceNumber[0]+7}`).children('div').hasClass("redPieces")) {
+					} else if (blackSpaceNumber[1] - blackSpaceNumber[0] === 14 && $(`.${blackSpaceNumber[0]+7}`).children().length === 2 && $(`.${blackSpaceNumber[0]+7}`).children('div').hasClass("redPieces") && $(`.${blackSpaceNumber[0]-14}`).children().length === 1) {
 						black.push(1)
 						$(`.${blackSpaceNumber[0]+7}`).children()[1].remove()
 						
